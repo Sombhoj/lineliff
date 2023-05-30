@@ -42,7 +42,7 @@
     console.log("Hello World!")
   </script> -->
 
-  <!-- <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script> -->
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
   <script>
     function createUniversalLink() {
     }
@@ -75,12 +75,29 @@
     }
 
     function getEnvironment() {
+      document.getElementById("os").append(liff.getOS()) // os -> android, ios, web
+      document.getElementById("language").append(liff.getLanguage())
+      document.getElementById("version").append(liff.getVersion())
+      document.getElementById("accessToken").append(liff.getAccessToken())
+      document.getElementById("isInClient").append(liff.isInClient())
+
+      // isInClient -> identify liff open in Line App or not 
+      if (liff.isInClient()) {
+        document.getElementById("btnLogOut").style.display = "none"
+      } else {
+        document.getElementById("btnMsg").style.direction = "none"
+        document.getElementById("btnScanCode").style.direction = "none"
+        document.getElementById("btnClose").style.direction = "none"
+      }
     }
 
     async function main() {
-      alert("LINE Developers x Skooldio")
-      await liff.init({ liffId: "YOUR-LIFF-ID" })
-      // getEnvironment()
+      // alert("LINE Developers x Skooldio")
+
+      // start here -> initial liff with LIFF id
+      await liff.init({ liffId: "1661270706-2BBqBbg4" })
+
+      getEnvironment()
       // getUserProfile()
       // getContext()
       // getFriendship()
