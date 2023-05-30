@@ -75,6 +75,9 @@
       const profile = await liff.getProfile()
       if (profile == null)
         alert("profile is null")
+      else
+        alert("profile is not null")
+
         
       document.getElementById("pictureUrl").src = profile.pictureUrl
       document.getElementById("userId").src = profile.userId
