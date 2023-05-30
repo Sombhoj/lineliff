@@ -73,6 +73,9 @@
 
     async function getUserProfile() {
       const profile = await liff.getProfile()
+      if (profile == null)
+        alert("profile is null")
+        
       document.getElementById("pictureUrl").src = profile.pictureUrl
       document.getElementById("userId").src = profile.userId
       document.getElementById("statusMessage").src = profile.statusMessage
