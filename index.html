@@ -72,17 +72,22 @@
     }
 
     async function getUserProfile() {
-      const profile = await liff.getProfile()
-      if (profile == null)
-        alert("profile is null")
-      else
-        alert("profile is not null")
+      liff.getProfile()
+      .then((profile) => {
+        document.getElementById("pictureUrl").src = profile.pictureUrl
+        document.getElementById("userId").src = profile.userId
+        document.getElementById("statusMessage").src = profile.statusMessage
+        document.getElementById("displayName").src = profile.displayName  
+      })
+      .catch((err) => {
+        alert(err);
+      });
+      // const profile = await liff.getProfile()
 
-        
-      document.getElementById("pictureUrl").src = profile.pictureUrl
-      document.getElementById("userId").src = profile.userId
-      document.getElementById("statusMessage").src = profile.statusMessage
-      document.getElementById("displayName").src = profile.displayName
+      // document.getElementById("pictureUrl").src = profile.pictureUrl
+      // document.getElementById("userId").src = profile.userId
+      // document.getElementById("statusMessage").src = profile.statusMessage
+      // document.getElementById("displayName").src = profile.displayName
     }
 
     function getEnvironment() {
