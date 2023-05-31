@@ -69,12 +69,16 @@
 
     function logOut() {
       alert("Logout")
-
-      if (liff.isLoggedIn()) {
-        alert("is Login")
-        liff.logOut()
+      
+      try {
+        if (liff.isLoggedIn()) {
+          liff.logOut()
+        }
+        location.reload()
       }
-      location.reload()
+      catch(err) {
+        alert(err)
+      }
     }
 
     function closed() {
