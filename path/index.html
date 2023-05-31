@@ -20,5 +20,35 @@
     const params = new URLSearchParams(queryString);
     document.getElementById("param").append(params.get("param"));
   </script>
+
+  <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+  <script>
+
+    async function getUserProfile() {      
+      liff.getProfile()
+      .then((profile) => {
+        document.getElementById("pictureUrl").src = profile.pictureUrl
+        document.getElementById("userId").append(profile.userId)
+        document.getElementById("statusMessage").append(profile.statusMessage)
+        document.getElementById("displayName").append(profile.displayName)
+        document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)
+      })
+      .catch((err) => {
+        alert(err);
+      });
+    }
+
+    async function main() {
+      // start here -> initial liff with LIFF id
+      await liff.init({ liffId: "1661270706-2BBqBbg4" })
+      
+      if (liff.isLoggedIn()) {
+        getUserProfile()
+      } else {
+        liff.login({ redirectUri: "https://sombhoj.github.io/lineliff/path" })
+      }
+    }
+    main()
+  </script>
 </body>
 </html>
