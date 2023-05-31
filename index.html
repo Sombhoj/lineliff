@@ -73,8 +73,8 @@
       try {
         if (liff.isLoggedIn()) {
           liff.logOut()
+          location.reload()
         }
-        location.reload()
       }
       catch(err) {
         alert(err)
