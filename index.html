@@ -51,9 +51,19 @@
     }
 
     async function shareMsg() {
+      //shareTargetPicker เป็นการแชร์ msg ไปให้เพื่อน หรือกลุ่มในนามของเราเอง
+      //จะใช้ต้องไป on shareTargetPicker ใน Line Developer console (Line/LIFF) ก่อน
+      await liff.shareTargetPicker([
+        {
+          "type": "text",
+          "text": "This message was sent by ShareTargetPicker"
+        }
+      ])
     }
 
     function logOut() {
+      liff.logOut()
+      windows.location.reload()
     }
 
     function closed() {
