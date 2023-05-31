@@ -45,7 +45,7 @@
     // tool for debuging
     var vConsole = new VConsole()
     console.log("Hello World!")
-    errorPlease()
+    //errorPlease()
   </script>
   <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
   <script>
@@ -72,15 +72,17 @@
     function logOut() {
       alert("Logout")
       
-      try {
-        if (liff.isLoggedIn()) {
-          liff.logOut()
-          location.reload()
-        }
-      }
-      catch(err) {
-        alert(err)
-      }
+      // try {
+      //   if (liff.isLoggedIn()) {
+      //     liff.logOut()
+      //     location.reload()
+      //   }
+      // }
+      // catch(err) {
+      //   alert(err)
+      // }
+      liff.logOut()
+      location.reload()
     }
 
     function closed() {
