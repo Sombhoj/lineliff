@@ -69,8 +69,9 @@
 
     function logOut() {
       alert("Logout")
-      
+
       if (liff.isLoggedIn()) {
+        alert("is Login")
         liff.logOut()
         windows.location.reload()
       }
