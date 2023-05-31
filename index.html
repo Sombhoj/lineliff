@@ -40,12 +40,13 @@
   <button id="btnLogOut" onclick="logOut()">Log Out</button>
   <button id="btnClose" onclick="closed()">Close</button>
 
-  <!-- <script src="js/vconsole.min.js"></script> -->
-  <!-- <script>
+  <script src="js/vconsole.min.js"></script>
+  <script>
+    // tool for debuging
     var vConsole = new VConsole()
     console.log("Hello World!")
-  </script> -->
-
+    errorPlease()
+  </script>
   <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
   <script>
     function createUniversalLink() {
@@ -187,19 +188,22 @@
     async function main() {
       // alert("LINE Developers x Skooldio")
 
+      // ปกติ liff จะต้อง .init ก่อนใช้งานตามลำดับ จึงมี liff.ready มาช่วยทำให้ไม่ต้องประกาศ .init ก่อนเสมอไป
+      liff.ready.then(() => {
+        document.getElementById("isLoggedIn").append(liff.isLoggedIn())
+
+        if (liff.isLoggedIn()) {
+          getEnvironment()
+          getUserProfile()
+          getContext()
+          getFriendship()
+          createUniversalLink()
+        } else {
+          //liff.login()
+        }
+      })
       // start here -> initial liff with LIFF id
       await liff.init({ liffId: "1661270706-2BBqBbg4" })
-      document.getElementById("isLoggedIn").append(liff.isLoggedIn())
-
-      if (liff.isLoggedIn()) {
-        getEnvironment()
-        getUserProfile()
-        getContext()
-        getFriendship()
-        createUniversalLink()
-      } else {
-        //liff.login()
-      }
     }
     main()
   </script>
