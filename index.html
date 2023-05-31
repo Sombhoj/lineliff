@@ -69,17 +69,24 @@
     }
 
     function getContext() {
-        liff.getContext()
-        .then((context) => {
-            document.getElementById("type").append(context.type)
-            document.getElementById("type").append(context.viewType)
-            document.getElementById("utouId").append(context.utouId)
-            document.getElementById("roomId").append(context.roomId)
-            document.getElementById("groupId").append(context.groupId)
-        })
-        .catch((err) => {
-          alert(err);
-        })
+        // liff.getContext()
+        // .then((context) => {
+        //     document.getElementById("type").append(context.type)
+        //     document.getElementById("type").append(context.viewType)
+        //     document.getElementById("utouId").append(context.utouId)
+        //     document.getElementById("roomId").append(context.roomId)
+        //     document.getElementById("groupId").append(context.groupId)
+        // })
+        // .catch((err) => {
+        //   alert(err);
+        // })
+
+    
+        document.getElementById("type").append(liff.getContext().type)
+        document.getElementById("type").append(liff.getContext().viewType)
+        document.getElementById("utouId").append(liff.getContext().utouId)
+        document.getElementById("roomId").append(liff.getContext().roomId)
+        document.getElementById("groupId").append(liff.getContext().groupId)
     }
 
     async function getUserProfile() {      
