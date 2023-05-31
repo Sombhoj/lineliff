@@ -71,11 +71,11 @@
     function getContext() {
         liff.getContext()
         .then((context) => {
-            document.getElementById("type").append = context.type
-            document.getElementById("type").append = context.viewType
-            document.getElementById("utouId").append = context.utouId
-            document.getElementById("roomId").append = context.roomId
-            document.getElementById("groupId").append = context.groupId
+            document.getElementById("type").append(context.type)
+            document.getElementById("type").append(context.viewType)
+            document.getElementById("utouId").append(context.utouId)
+            document.getElementById("roomId").append(context.roomId)
+            document.getElementById("groupId").append(context.groupId)
         })
         .catch((err) => {
           alert(err);
